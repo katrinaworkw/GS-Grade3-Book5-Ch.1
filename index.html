@@ -199,23 +199,23 @@
     /* Mode Switcher Tabs */
     .mode-switcher {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
       margin-bottom: 16px;
     }
 
     .mode-btn {
-      padding: 14px;
+      padding: 12px 6px;
       border-radius: 16px;
       border: 2px solid transparent;
       background: rgba(255, 255, 255, 0.85);
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       cursor: pointer;
       box-shadow: var(--shadow-sm);
     }
@@ -445,6 +445,7 @@
       border: 3px solid #E2E8F0;
       box-shadow: var(--shadow-md);
       cursor: pointer;
+      transition: all 0.2s;
     }
 
     .word-option-text {
@@ -472,7 +473,115 @@
     }
 
     .word-option-card.correct { background: #DEF7EC !important; border-color: var(--success) !important; }
-    .word-option-card.wrong { background: #FDE8E8 !important; border-color: var(--danger) !important; }
+    .word-option-card.wrong { background: #FDE8E8 !important; border-color: var(--danger) !important; opacity: 0.65; cursor: not-allowed; }
+
+    .round-complete-banner {
+      background: #FEF3C7;
+      border: 2px solid #F59E0B;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      width: 100%;
+      max-width: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .round-complete-banner h3 { font-size: 1.3rem; color: #92400E; }
+    .round-complete-banner p { font-size: 0.95rem; color: #78350F; }
+
+    .reset-round-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* MODE 3: ALL WORDS PROGRESS SUB-PAGE */
+    .all-words-wrapper {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .progress-summary-bar {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .legend-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.green { background: var(--success); }
+    .dot.red { background: var(--danger); }
+    .dot.grey { background: #CBD5E1; }
+
+    .word-progress-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+      width: 100%;
+    }
+
+    .progress-word-tile {
+      background: #F1F5F9;
+      color: var(--text-main);
+      border: 2px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 12px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .progress-word-tile:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .progress-word-tile.correct-green { background: #DEF7EC; color: #03543F; border-color: #31C48D; }
+    .progress-word-tile.wrong-red { background: #FDE8E8; color: #9B1C1C; border-color: #F98080; }
+
+    .tile-text {
+      font-family: var(--font-chinese);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .tile-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 4px;
+      opacity: 0.85;
+    }
 
     /* DASHBOARD TABLES & REVISION CARDS */
     .dashboard-panel {
@@ -517,13 +626,9 @@
       font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
-    .clear-btn:hover {
-      background: #EF4444;
-      color: #FFFFFF;
-    }
+    .clear-btn:hover { background: #EF4444; color: #FFFFFF; }
 
     .revision-chips-container {
       display: flex;
@@ -563,7 +668,6 @@
     th { background: #F8FAFC; color: var(--text-muted); font-weight: 700; }
     td.word-td { font-family: var(--font-chinese); font-size: 1.2rem; font-weight: bold; }
 
-    /* Delete Button in Table */
     .delete-row-btn {
       background: #FEE2E2;
       color: #EF4444;
@@ -577,20 +681,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
     }
 
-    .delete-row-btn:hover {
-      background: #EF4444;
-      color: #FFFFFF;
-      transform: scale(1.1);
-    }
+    .delete-row-btn:hover { background: #EF4444; color: #FFFFFF; }
 
     .footer-actions {
-      margin-top: 16px;
+      margin-top: 20px;
       display: flex;
       justify-content: center;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
     .text-btn {
@@ -603,10 +703,30 @@
       text-decoration: underline;
     }
 
+    .restart-app-btn {
+      background: #FEE2E2;
+      color: #DC2626;
+      border: 1.5px solid #F87171;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .restart-app-btn:hover { background: #DC2626; color: white; }
+
     @media (max-width: 640px) {
+      .mode-switcher { grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+      .mode-btn { font-size: 0.78rem; padding: 10px 4px; }
       .answer-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .word-option-text { font-size: 2.2rem; }
       .card-word { font-size: 3.6rem; }
+      .word-progress-grid { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); }
+      .tile-text { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -655,6 +775,9 @@
       <button class="mode-btn" id="modeBtnCard" onclick="switchMode('card')">
         🎴 標楷體字詞卡
       </button>
+      <button class="mode-btn" id="modeBtnAllWords" onclick="switchMode('allwords')">
+        📊 答題總表
+      </button>
     </div>
 
     <div class="game-viewport">
@@ -669,6 +792,12 @@
         </div>
 
         <div class="answer-grid" id="answerGrid"></div>
+
+        <div class="round-complete-banner" id="roundCompleteBanner" style="display: none;">
+          <h3>🎉 恭喜！本輪主題所有字詞已全部測試完畢！</h3>
+          <p id="roundCompleteSubtext">答題總表中所有字詞已顯示為綠色或紅色。</p>
+          <button class="reset-round-btn" onclick="resetCurrentRound()">🔄 重置答題記錄並開始新一輪</button>
+        </div>
       </div>
 
       <!-- MODE 2: FLASHCARD VIEW -->
@@ -697,6 +826,21 @@
           <button class="nav-btn" onclick="prevCard()">上一張</button>
           <button class="nav-btn" onclick="nextCard()">下一張</button>
         </div>
+      </div>
+
+      <!-- MODE 3: ALL WORDS PROGRESS SUB-PAGE -->
+      <div class="all-words-wrapper" id="allWordsView" style="display: none;">
+        <div class="progress-summary-bar">
+          <div style="font-weight: 900; font-size: 1rem;" id="progressSummaryText">進度：0 / 0 已完成</div>
+          <div class="legend-group">
+            <div class="legend-item"><span class="dot green"></span> 正確 (綠)</div>
+            <div class="legend-item"><span class="dot red"></span> 錯誤 (紅)</div>
+            <div class="legend-item"><span class="dot grey"></span> 未測試 (灰)</div>
+          </div>
+          <button class="clear-btn" onclick="resetCurrentRound()">🔄 重置本類別狀態</button>
+        </div>
+
+        <div class="word-progress-grid" id="wordProgressGrid"></div>
       </div>
     </div>
 
@@ -738,6 +882,7 @@
 
     <div class="footer-actions">
       <button class="text-btn" onclick="customWordsPrompt()">+ 自訂加入新詞語</button>
+      <button class="restart-app-btn" onclick="restartEntireGame()">🔄 重置為新玩家 (清除所有記錄)</button>
     </div>
   </div>
 
@@ -746,9 +891,14 @@
     const JSONBIN_BIN_ID = "6ad880fcffd5d160537ec35a";
     const JSONBIN_API_KEY = "$2a$10$F9Xaygh09D781X3wifsgFueGCSAbHaKqD34xld1wTCdVqGGpUXRuO";
 
-    let wordStatusMap = {};
+    // Global Game Progress States
+    let wordStatusMap = {}; // Flashcard state: { word: 'know' | 'dontknow' }
+    let gameResultMap = {}; // Matching game state: { word: 'green' | 'red' }
     let wrongAnswerRecords = [];
     let score = 0;
+
+    // Track state within the current question turn
+    let currentQuestionHadWrongAttempt = false;
 
     async function loadCloudData() {
       try {
@@ -760,10 +910,12 @@
           const data = result.record;
           if (data) {
             wordStatusMap = data.wordStatusMap || {};
+            gameResultMap = data.gameResultMap || {};
             wrongAnswerRecords = data.wrongAnswerRecords || [];
             score = data.score || 0;
             renderRevisionChips();
             renderWrongAnswerTable();
+            renderAllWordsGrid();
             updateStats();
           }
           document.getElementById('syncBadge').innerText = '☁️ 雲端已同步';
@@ -778,6 +930,7 @@
     async function saveCloudDataOnInteraction() {
       const dataToSave = {
         wordStatusMap: wordStatusMap,
+        gameResultMap: gameResultMap,
         wrongAnswerRecords: wrongAnswerRecords,
         score: score,
         lastUpdated: Date.now()
@@ -910,6 +1063,8 @@
       currentCategory = val;
       loadVocabularyList();
       currentCardIndex = 0;
+      renderAllWordsGrid();
+
       if (currentMode === 'listen') {
         setupNewListenQuestion();
       } else {
@@ -927,25 +1082,53 @@
       currentMode = mode;
       document.getElementById('modeBtnListen').classList.toggle('active', mode === 'listen');
       document.getElementById('modeBtnCard').classList.toggle('active', mode === 'card');
+      document.getElementById('modeBtnAllWords').classList.toggle('active', mode === 'allwords');
 
       document.getElementById('listenGameView').style.display = mode === 'listen' ? 'flex' : 'none';
       document.getElementById('flashcardView').style.display = mode === 'card' ? 'flex' : 'none';
+      document.getElementById('allWordsView').style.display = mode === 'allwords' ? 'flex' : 'none';
 
       if (mode === 'listen') {
         setupNewListenQuestion();
-      } else {
+      } else if (mode === 'card') {
         updateFlashcard();
+      } else if (mode === 'allwords') {
+        renderAllWordsGrid();
       }
     }
 
-    /* LISTEN & CHOOSE WORD GAME */
+    /* LISTEN & CHOOSE WORD GAME (ALLOW MULTIPLE TRIES PER QUESTION) */
     function setupNewListenQuestion() {
       if (currentVocabularyList.length === 0) return;
 
-      const randomIndex = Math.floor(Math.random() * currentVocabularyList.length);
-      currentListenTarget = currentVocabularyList[randomIndex];
+      // Filter words in current category that have NOT yet been answered in matching game
+      const unplayedWords = currentVocabularyList.filter(w => !gameResultMap[w]);
+
+      const banner = document.getElementById('roundCompleteBanner');
+      const grid = document.getElementById('answerGrid');
+
+      // If all words in current list have been answered
+      if (unplayedWords.length === 0) {
+        grid.style.display = 'none';
+        document.querySelector('.audio-prompt-card').style.display = 'none';
+        banner.style.display = 'flex';
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+        return;
+      }
+
+      grid.style.display = 'grid';
+      document.querySelector('.audio-prompt-card').style.display = 'flex';
+      banner.style.display = 'none';
+
+      // Reset turn tracking flag
+      currentQuestionHadWrongAttempt = false;
+
+      // Pick a random unplayed word
+      const randomIndex = Math.floor(Math.random() * unplayedWords.length);
+      currentListenTarget = unplayedWords[randomIndex];
       const targetLength = currentListenTarget.length;
 
+      // Select distractors
       let allFullVocab = Object.values(VOCAB_DATA).flat();
       let sameLengthCandidates = allFullVocab.filter(w => w.length === targetLength && w !== currentListenTarget);
       sameLengthCandidates = [...new Set(sameLengthCandidates)];
@@ -958,7 +1141,6 @@
       const distractors = shuffleArray(sameLengthCandidates).slice(0, 3);
       currentListenOptions = shuffleArray([currentListenTarget, ...distractors]);
 
-      const grid = document.getElementById('answerGrid');
       grid.innerHTML = '';
 
       currentListenOptions.forEach((word, idx) => {
@@ -982,36 +1164,117 @@
       if (cardElement.classList.contains('correct') || cardElement.classList.contains('wrong')) return;
 
       if (selectedWord === currentListenTarget) {
+        // CORRECT ANSWER!
         cardElement.classList.add('correct');
         playSoundEffect(true);
-        score += 10;
-        streak += 1;
 
-        if (streak % 5 === 0) {
+        if (!currentQuestionHadWrongAttempt) {
+          // Clean first-try win -> Green on Sub-page
+          score += 10;
+          streak += 1;
+          gameResultMap[currentListenTarget] = 'green';
+        } else {
+          // Won after wrong attempts -> Red on Sub-page because missteps occurred
+          gameResultMap[currentListenTarget] = 'red';
+        }
+
+        if (streak % 5 === 0 && streak > 0) {
           confetti({ particleCount: 80, spread: 60, origin: { y: 0.7 } });
         }
 
         updateStats();
+        renderAllWordsGrid();
         saveCloudDataOnInteraction();
 
         setTimeout(() => { setupNewListenQuestion(); }, 1000);
       } else {
+        // WRONG ANSWER TAP!
         cardElement.classList.add('wrong');
         playSoundEffect(false);
         streak = 0;
-        updateStats();
+        currentQuestionHadWrongAttempt = true;
 
-        // 1. Record in Matching Game Wrong Answer Table
-        logWrongAnswer(currentListenTarget, selectedWord);
+        // 1. Mark question word as Red on sub-page
+        gameResultMap[currentListenTarget] = 'red';
 
-        // 2. Directly add BOTH correct target word and wrong chosen word to Revision List
+        // 2. Add BOTH target word & wrong answer word to Flashcard Revision list
         wordStatusMap[currentListenTarget] = 'dontknow';
         wordStatusMap[selectedWord] = 'dontknow';
         renderRevisionChips();
 
-        // 3. Sync to Cloud Immediately
+        // 3. Add to wrong answer record log table
+        logWrongAnswer(currentListenTarget, selectedWord);
+
+        updateStats();
+        renderAllWordsGrid();
         saveCloudDataOnInteraction();
+
+        // Note: Do NOT jump to next question; student keeps choosing on same question!
       }
+    }
+
+    function resetCurrentRound() {
+      currentVocabularyList.forEach(w => {
+        delete gameResultMap[w];
+      });
+      renderAllWordsGrid();
+      saveCloudDataOnInteraction();
+      setupNewListenQuestion();
+    }
+
+    function restartEntireGame() {
+      if (confirm("⚠️ 確定要重置為新玩家嗎？這將清除所有積分、待複習字詞及錯題記錄！")) {
+        wordStatusMap = {};
+        gameResultMap = {};
+        wrongAnswerRecords = [];
+        score = 0;
+        streak = 0;
+
+        updateStats();
+        renderRevisionChips();
+        renderWrongAnswerTable();
+        renderAllWordsGrid();
+        saveCloudDataOnInteraction();
+        setupNewListenQuestion();
+      }
+    }
+
+    /* SUB-PAGE 3: ALL WORDS PROGRESS TABLE */
+    function renderAllWordsGrid() {
+      const container = document.getElementById('wordProgressGrid');
+      const summaryText = document.getElementById('progressSummaryText');
+
+      if (!container) return;
+
+      const total = currentVocabularyList.length;
+      let completedCount = 0;
+      let html = '';
+
+      currentVocabularyList.forEach(word => {
+        const res = gameResultMap[word];
+        let tileClass = 'progress-word-tile';
+        let statusTag = '未測試';
+
+        if (res === 'green') {
+          tileClass += ' correct-green';
+          statusTag = '✅ 正確';
+          completedCount++;
+        } else if (res === 'red') {
+          tileClass += ' wrong-red';
+          statusTag = '❌ 錯誤';
+          completedCount++;
+        }
+
+        html += `
+          <div class="${tileClass}" onclick="jumpToFlashcard('${word}')">
+            <span class="tile-text">${word}</span>
+            <span class="tile-tag">${statusTag}</span>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      summaryText.innerText = `進度：${completedCount} / ${total} 已測試`;
     }
 
     function logWrongAnswer(target, selected) {
